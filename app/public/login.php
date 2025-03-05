@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 require_once '/app/requests/users.php';
 
 //vérifier si le formulaire a été soumis

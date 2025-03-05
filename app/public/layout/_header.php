@@ -10,8 +10,12 @@
             </li>
         </ul>
         <ul class="navbar-buttons">
-            <li class="navabar-item">
-                <a href="/login.php" class="btn btn-secondary">Login</a>
+            <li class="navbar-item">
+                <?php if (!empty($_SESSION['user'])): ?>
+                    <a href="/logout.php" class="btn btn-danger">Logout</a>
+                <?php else: ?>
+                    <a href="/login.php" class="btn btn-secondary">Login</a>
+                <?php endif; ?>
             </li>
         </ul>
     </nav>
