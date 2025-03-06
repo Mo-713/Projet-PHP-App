@@ -1,14 +1,23 @@
+<?php
+
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My first app PHP</title>
     <link rel="stylesheet" href="/assets/styles/main.css">
 </head>
+
 <body>
     <?php require_once '/app/public/layout/_header.php'; ?>
     <main>
+        <?php require_once '/app/public/layout/_messages.php'; ?>
         <form action="/contact.php" method="GET">
             <label for="name">Votre nom</label>
             <input type="text" name="name" id="name">
@@ -20,4 +29,5 @@
         </form>
     </main>
 </body>
+
 </html>
