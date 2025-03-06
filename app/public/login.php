@@ -16,18 +16,17 @@ if (
     //Récupérer l'user en BDD
     $user = findOneUserByEmail($email);
 
-    if($user && password_verify($password, $user ['password'])) {
+    if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user'] = [
             'id' => $user['id'],
-            'firstName'=> $user['first_name'],
-            'last_name'=> $user['last_name'],
-            'email'=> $user['email'],
-            'roles'=>json_decode( $user['roles']?? '')
+            'firstName' => $user['first_name'],
+            'last_name' => $user['last_name'],
+            'email' => $user['email'],
+            'roles' => json_decode($user['roles'] ?? '')
         ];
         //Redirection vers la page d'accueil
         header('Location: /');
         exit(302);
-
     } else {
         $errorMessage = "Indentifiants incorrects";
     }
@@ -55,6 +54,7 @@ if (
 <body>
     <?php require_once '/app/public/layout/_header.php'; ?>
     <main>
+        <?php require_once '/app/public/layout/_messages.php'; ?>
         <section class="container mt-4">
             <h1 class="title text-center">Se connecter</h1>
             <form action="/login.php" method="POST" class="card mt-4 mx-auto w-50">

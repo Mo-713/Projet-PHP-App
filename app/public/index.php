@@ -17,6 +17,7 @@ session_start();
 <body>
     <?php require_once '/app/public/layout/_header.php'; ?>
     <main>
+        <?php require_once '/app/public/layout/_messages.php'; ?>
         <form action="/contact.php" method="GET">
             <label for="name">Votre nom</label>
             <input type="text" name="name" id="name">

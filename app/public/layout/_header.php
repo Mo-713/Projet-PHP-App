@@ -1,22 +1,30 @@
 <header class="navbar">
     <nav class="navbar-content">
-        <a href="/" class="navbar-logo">My first app PHP</a>
+        <a href="/" class="navbar-logo">My first App PHP</a>
         <ul class="navbar-links">
-            <li class="navbar-item"><a href="#">Accueil</a>
+            <li class="navbar-item">
+                <a href="#">Accueil</a>
             </li>
-            <li class="navbar-item"><a href="#">Profil</a>
+            <li class="navbar-item">
+                <a href="#">Profil</a>
             </li>
-            <li class="navbar-item"><a href="#">Blog</a>
+            <li class="navbar-item">
+                <a href="#">Blog</a>
             </li>
         </ul>
         <ul class="navbar-buttons">
-            <li class="navbar-item">
-                <?php if (!empty($_SESSION['user'])): ?>
+            <?php if (!empty($_SESSION['user'])): ?>
+                <li class="navbar-item">
                     <a href="/logout.php" class="btn btn-danger">Logout</a>
-                <?php else: ?>
+                </li>
+            <?php else: ?>
+                <li class="navbar-item">
                     <a href="/login.php" class="btn btn-secondary">Login</a>
-                <?php endif; ?>
-            </li>
+                </li>
+                <li class="navbar-item">
+                    <a href="/register.php" class="btn btn-light">Register</a>
+                </li>
+            <?php endif; ?>
         </ul>
     </nav>
 </header>
