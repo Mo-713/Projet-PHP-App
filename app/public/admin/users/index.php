@@ -5,17 +5,8 @@ session_start();
 //Vérifier si l'user n'est pas Admin-> le rediriger
 
 //Si clé user vide ou non déf-> Pas connecté
-if (
-    empty($_SESSION['user'])
-    || !in_array('ROLE_ADMIN', $_SESSION['user']['roles'])
-) {
-    //On défini un message d'erreur
-    $_SESSION['messages']['danger'] = "Vous n'avez pas accés à cette page";
-
-    //On redirige vers la page de login
-    header('Location: /login.php');
-    exit(302);
-}
+require_once '/app/utils/utils.php';
+checkAdmin();
 
 require_once '/app/requests/users.php';
 
@@ -47,7 +38,7 @@ require_once '/app/requests/users.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach (findAllUsers() as $user): ?>
+                    <?php foreach (findAllUsers() as $user) : ?>
                         <tr>
                             <td><?= $user['id']; ?></td>
                             <td><?= "$user[first_name] $user[last_name]"; ?></td>
@@ -55,7 +46,7 @@ require_once '/app/requests/users.php';
                             <td><?= $user['roles']; ?></td>
                             <td>
                                 <div class="table-btn">
-                                    <a href="#" class="btn btn-secondary">Modifier</a>
+                                    <a href="/admin/users/update.php?id=<?=$user['id']; ?> " class="btn btn-secondary">Modifier</a>
                                     <a href="#" class="btn btn-danger">Supprimer</a>
                                 </div>
                             </td>
