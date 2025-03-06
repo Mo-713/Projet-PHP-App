@@ -17,12 +17,13 @@ if (
     $user = findOneUserByEmail($email);
 
     if ($user && password_verify($password, $user['password'])) {
+        //On stock l'user en session
         $_SESSION['user'] = [
             'id' => $user['id'],
             'firstName' => $user['first_name'],
             'last_name' => $user['last_name'],
             'email' => $user['email'],
-            'roles' => json_decode($user['roles'] ?? '')
+            'roles' => json_decode($user['roles'] ?? '[]')
         ];
         //Redirection vers la page d'accueil
         header('Location: /');
